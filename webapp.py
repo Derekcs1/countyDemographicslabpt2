@@ -10,7 +10,7 @@ def render_main():
         counties = json.load(demographics_data)
     if 'State' in request.args:
         selected_state = request.args["State"]
-        return render_template('home.html', response_options = get_state_options(counties), percentUnder18 = percentUnder18(counties, selected_state), response_state = selected_state)
+        return render_template('home.html', response_options = get_state_options(counties), percentOver65 = percentOver65(counties, selected_state), response_state = selected_state)
     return render_template('home.html', response_options = get_state_options(counties))
 
 def get_state_options(counties):
@@ -22,12 +22,12 @@ def get_state_options(counties):
             options += Markup("<option value=\"" + c["State"] + "\">" + c["State"] + "</option>")
     return options
 
-def percentUnder18(counties, selected_state):
-    percentUnder18 = 0
+def percentOver65(counties, selected_state):
+    percentOver65 = 0
     for c in counties:
         if c["State"] == selected_state:
-            percentUnder18 = c["Age"]["Percent Under 18 Years"]
-    return str(percentUnder18)
+            percentUnder18 = c["Age"]["Percent 65 and Older"]
+    return str(percentOver65)
 
 if __name__=="__main__":
     app.run(debug=False, port=54321)
