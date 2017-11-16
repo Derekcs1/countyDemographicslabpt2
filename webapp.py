@@ -26,7 +26,7 @@ def percentOver65(counties, selected_state):
     percentOver65 = 0
     for c in counties:
         if c["State"] == selected_state:
-            percentUnder18 = c["Age"]["Percent 65 and Older"]
+            percentOver65 = c["Age"]["Percent 65 and Older"]
     return str(percentOver65)
 
 if __name__=="__main__":
