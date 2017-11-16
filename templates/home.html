@@ -10,8 +10,8 @@
           <br><br>
           <input type="submit">
       </form>
-      {% if response_state and percentUnder18 is defined %}
-        <p> In {{ response_state }}, {{ percentUnder18 }} percent of people are under 18 </p>
+      {% if response_state and percentOver65 is defined %}
+        <p> In {{ response_state }}, {{ percentOver65 }} percent of people over 65 </p>
       {% endif %}
     </body>
 </html>
