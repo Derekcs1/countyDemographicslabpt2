@@ -6,7 +6,7 @@ app = Flask(__name__) #__name__ = "__main__" if this is the file that was run.  
 
 @app.route("/")
 def render_main():
-    with open('static/drugs.json') as demographics_data:
+    with open('county_demographics.json') as demographics_data:
         counties = json.load(demographics_data)
     if 'State' in request.args:
         selected_state = request.args["State"]
@@ -26,7 +26,7 @@ def percentOver65(counties, selected_state):
     percentOver65 = 0
     for c in counties:
         if c["State"] == selected_state:
-            percentOver65 = c["Illicit Drugs"]["Dependence Past Year"]["18-25"]
+            percentOver65 = c["Age"]["Percent 65 and Older"]
     return str(percentOver65)
 
 if __name__=="__main__":
